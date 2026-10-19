@@ -1,50 +1,31 @@
 "use strict";
 (() => {
-  const root = document.documentElement;
-  root.classList.add("js");
+  document.documentElement.classList.add("js");
   const calm = matchMedia("(prefers-reduced-motion: reduce)");
-  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
-  const ease = (t) => 1 - Math.pow(1 - t, 3);
+  const play = (v) => { if (!calm.matches) { const p = v.play(); if (p) p.catch(() => {}); } };
 
-  /* Начало: круг с чашкой растёт по прокрутке, пока не закроет шляпы */
-  const intro = document.querySelector(".intro");
-  const media = intro && intro.querySelector(".intro__media");
-  const cup = intro && intro.querySelector(".intro__cup");
-  const head = document.querySelector(".top");
-  let geo = null;
-
-  function measure() {
-    if (!media) return;
-    const w = media.clientWidth, h = media.clientHeight;
-    const cy = parseFloat(getComputedStyle(media).getPropertyValue("--cy")) / 100 * h;
-    const cx = w / 2;
-    const r0 = Math.min(w, h) * (w < 500 ? 0.34 : 0.26);
-    const rMax = Math.hypot(Math.max(cx, w - cx), Math.max(cy, h - cy)) + 2;
-    geo = { r0, rMax, span: intro.offsetHeight - innerHeight };
+  /* Фон начала: широкое видео на компьютере, вертикальное на телефоне */
+  const hv = document.querySelector(".hero__video");
+  if (hv) {
+    const tall = matchMedia("(max-width: 860px)").matches;
+    hv.poster = tall ? "v/street-m.jpg" : "v/street.jpg";
+    if (!calm.matches) { hv.src = tall ? hv.dataset.tall : hv.dataset.wide; hv.preload = "auto"; play(hv); }
   }
 
-  let ticking = false;
-  function frame() {
-    ticking = false;
-    if (intro && geo) {
-      const top = intro.getBoundingClientRect().top;
-      const p = calm.matches ? 0 : clamp(-top / Math.max(1, geo.span), 0, 1);
-      const g = ease(clamp((p - 0.08) / 0.62, 0, 1));
-      intro.style.setProperty("--p", p.toFixed(4));
-      intro.style.setProperty("--g", g.toFixed(4));
-      cup.style.setProperty("--r", (geo.r0 + (geo.rMax - geo.r0) * g).toFixed(1) + "px");
-      intro.classList.toggle("is-late", p > 0.42);
-    }
-    if (head && intro) head.classList.toggle("is-solid", intro.getBoundingClientRect().bottom <= head.offsetHeight + 1);
+  /* Шапка становится плотной, когда начало ушло вверх */
+  const bar = document.getElementById("topbar");
+  const hero = document.getElementById("top");
+  if (bar && hero) {
+    new IntersectionObserver(([e]) => bar.classList.toggle("is-solid", !e.isIntersecting), { rootMargin: "-80px 0px 0px" }).observe(hero);
   }
-  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
-  measure(); frame();
-  addEventListener("scroll", onScroll, { passive: true });
-  addEventListener("resize", () => { measure(); onScroll(); });
 
-  /* Видео играют, только пока видны на экране */
-  const play = (v) => { if (!calm.matches) { const pr = v.play(); if (pr) pr.catch(() => {}); } };
-  const vids = document.querySelectorAll("video[data-auto], .intro__video");
+  /* Блоки выезжают при прокрутке (один раз) */
+  const shown = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add("is-in"); shown.unobserve(e.target); }
+  }, { rootMargin: "0px 0px -12% 0px" });
+  document.querySelectorAll(".reveal").forEach((el) => shown.observe(el));
+
+  /* Ролики играют, только пока видны на экране */
   const seen = new IntersectionObserver((entries) => {
     for (const e of entries) {
       const v = e.target;
@@ -52,72 +33,62 @@
       else v.pause();
     }
   }, { rootMargin: "120px 0px" });
-  vids.forEach((v) => seen.observe(v));
+  document.querySelectorAll("video[data-auto]").forEach((v) => seen.observe(v));
+  if (hv) new IntersectionObserver(([e]) => { if (e.isIntersecting) play(hv); else hv.pause(); }).observe(hv);
 
-  /* Рецепт: какой шаг на середине экрана, тот кусок ролика и играет */
-  const rv = document.querySelector(".recipe__video");
-  const steps = [...document.querySelectorAll(".step")];
-  let cur = steps[0];
-  function setStep(s) {
-    if (!rv || s === cur && !rv.paused) return;
-    cur = s;
-    steps.forEach((x) => x.classList.toggle("is-on", x === s));
-    const t = parseFloat(s.dataset.t);
-    if (rv.readyState >= 1) rv.currentTime = calm.matches ? t + 0.6 : t;
-    else rv.addEventListener("loadedmetadata", () => { rv.currentTime = t; }, { once: true });
-    play(rv);
+  /* Лента отзывов: вторая копия для бесшовной прокрутки */
+  const qt = document.querySelector(".quotes__track");
+  if (qt && !calm.matches) {
+    [...qt.children].forEach((li) => { const c = li.cloneNode(true); c.setAttribute("aria-hidden", "true"); qt.append(c); });
   }
-  if (rv && steps.length) {
-    const stepIo = new IntersectionObserver((entries) => {
-      for (const e of entries) if (e.isIntersecting) setStep(e.target);
-    }, { rootMargin: matchMedia("(max-width: 860px)").matches ? "-76% 0px -22% 0px" : "-48% 0px -48% 0px" });
-    steps.forEach((s) => stepIo.observe(s));
-    rv.addEventListener("timeupdate", () => {
-      if (cur && rv.currentTime >= parseFloat(cur.dataset.end)) rv.currentTime = parseFloat(cur.dataset.t);
-    });
-    new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) { rv.preload = "auto"; play(rv); } else rv.pause();
+
+  /* Меню: вкладки и фото раздела */
+  const pic = document.getElementById("menu-pic");
+  document.querySelectorAll('[role="tablist"]').forEach((list) => {
+    const tabs = [...list.querySelectorAll('[role="tab"]')];
+    const vertical = () => getComputedStyle(list).flexDirection === "column";
+    const select = (tab, focus) => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute("aria-selected", on);
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+      });
+      if (focus) tab.focus();
+      if (!vertical()) tab.scrollIntoView({ block: "nearest", inline: "center", behavior: calm.matches ? "auto" : "smooth" });
+      if (pic && tab.dataset.pic && !pic.src.endsWith(tab.dataset.pic)) {
+        pic.classList.add("is-swap");
+        setTimeout(() => {
+          pic.src = tab.dataset.pic;
+          pic.onload = () => pic.classList.remove("is-swap");
+        }, calm.matches ? 0 : 200);
       }
-    }).observe(rv);
-  }
-
-  /* Вкладки меню */
-  const tabs = [...document.querySelectorAll('[role="tab"]')];
-  function select(tab, focus) {
-    tabs.forEach((t) => {
-      const on = t === tab;
-      t.setAttribute("aria-selected", on);
-      t.tabIndex = on ? 0 : -1;
-      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
-    });
-    if (focus) tab.focus();
-    tab.scrollIntoView({ block: "nearest", inline: "nearest" });
-  }
-  if (tabs.length) {
-    select(tabs[0], false);
+    };
     tabs.forEach((t, i) => {
+      t.tabIndex = t.getAttribute("aria-selected") === "true" ? 0 : -1;
+      if (t.getAttribute("aria-selected") !== "true") document.getElementById(t.getAttribute("aria-controls")).hidden = true;
       t.addEventListener("click", () => select(t, false));
       t.addEventListener("keydown", (e) => {
-        const k = e.key;
-        let j = null;
-        if (k === "ArrowRight") j = (i + 1) % tabs.length;
-        else if (k === "ArrowLeft") j = (i - 1 + tabs.length) % tabs.length;
-        else if (k === "Home") j = 0;
-        else if (k === "End") j = tabs.length - 1;
-        if (j !== null) { e.preventDefault(); select(tabs[j], true); }
+        const next = (i + 1) % tabs.length, prev = (i - 1 + tabs.length) % tabs.length;
+        const map = { ArrowDown: next, ArrowRight: next, ArrowUp: prev, ArrowLeft: prev, Home: 0, End: tabs.length - 1 };
+        if (e.key in map) { e.preventDefault(); select(tabs[map[e.key]], true); }
       });
     });
-  }
+    const warm = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      warm.disconnect();
+      tabs.forEach((t) => { if (t.dataset.pic) new Image().src = t.dataset.pic; });
+    }, { rootMargin: "400px 0px" });
+    warm.observe(list);
+  });
 
-  /* Открыто ли сейчас (по времени Ташкента, UTC+5): каждый день 07:00-00:00 */
+  /* Открыто ли сейчас по времени Ташкента (UTC+5): каждый день 07:00-00:00 */
   const now = document.getElementById("now");
   if (now) {
-    const d = new Date(Date.now() + 5 * 3600e3);
-    const m = d.getUTCHours() * 60 + d.getUTCMinutes();
-    const open = m >= 7 * 60;
-    now.textContent = open ? "Сейчас открыто, до 00:00" : "Сейчас закрыто, откроемся в 07:00";
+    const h = new Date(Date.now() + 5 * 3600e3).getUTCHours();
+    const open = h >= 7;
+    now.querySelector("b").textContent = open ? "Открыто" : "Закрыто";
+    now.lastChild.textContent = open ? " до 00:00" : " откроемся в 07:00";
     now.classList.toggle("is-closed", !open);
-    now.hidden = false;
   }
 })();
