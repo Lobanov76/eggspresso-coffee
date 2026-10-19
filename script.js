@@ -25,6 +25,12 @@
   }, { rootMargin: "0px 0px -12% 0px" });
   document.querySelectorAll(".reveal, .pop").forEach((el) => shown.observe(el));
 
+  /* «О нас»: сначала появляется текст по центру, потом слева и справа выезжают фото */
+  const stageSeen = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add("is-in"); stageSeen.unobserve(e.target); }
+  }, { threshold: 0.2 });
+  document.querySelectorAll("[data-stage]").forEach((el) => stageSeen.observe(el));
+
   /* Листалки вбок (шаги рецепта, отзывы): свайп пальцем или стрелки */
   document.querySelectorAll(".rail").forEach((rail) => {
     const box = rail.closest("section");
@@ -48,6 +54,34 @@
     });
     addEventListener("resize", update);
     update();
+
+    /* Шаги рецепта: вкладки и автолистание, пока блок на экране и гость не листает сам */
+    const chips = [...box.querySelectorAll(".chip")];
+    if (!chips.length) return;
+    const chipBox = chips[0].parentElement;
+    const go = (k, smooth = true) => rail.scrollTo({ left: items[k].offsetLeft - items[0].offsetLeft, behavior: smooth && !calm.matches ? "smooth" : "auto" });
+    const syncChips = () => {
+      const k = items.findIndex((it) => it.classList.contains("is-active"));
+      chips.forEach((c, i) => c.classList.toggle("is-on", i === k));
+    };
+    rail.addEventListener("scroll", () => requestAnimationFrame(syncChips), { passive: true });
+    syncChips();
+    let timer = 0, visible = false, stopped = calm.matches;
+    const stop = () => { stopped = true; clearInterval(timer); chipBox.classList.remove("is-auto"); };
+    const tick = () => {
+      const k = items.findIndex((it) => it.classList.contains("is-active"));
+      go((k + 1) % items.length);
+    };
+    const run = () => {
+      clearInterval(timer);
+      if (stopped || !visible) { chipBox.classList.remove("is-auto"); return; }
+      chipBox.classList.add("is-auto");
+      timer = setInterval(tick, 6000);
+    };
+    chips.forEach((c, i) => c.addEventListener("click", () => { stop(); go(i); }));
+    btns.forEach((b) => b.addEventListener("click", stop));
+    ["pointerdown", "wheel", "touchstart", "keydown"].forEach((ev) => rail.addEventListener(ev, stop, { passive: true }));
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; run(); }, { threshold: 0.5 }).observe(rail);
   });
 
   /* Ролики играют, только пока видны на экране */
