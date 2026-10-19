@@ -112,6 +112,7 @@ a { color: inherit; }
 .ingr li + li { border-left: 1px dashed rgba(15, 42, 29, .35); }
 .ingr img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; box-shadow: 0 0 0 3px var(--paper), 0 0 0 4.5px var(--line); }
 .ingr b { display: block; font: 800 1.45rem/1 "Alumni", sans-serif; }
+.ingr span i { font: italic 600 1rem/1 "Alumni", sans-serif; color: var(--green); margin-right: 4px; letter-spacing: .02em; }
 .ingr span { font-size: .88rem; color: var(--muted); line-height: 1.3; display: block; margin-top: 3px; }
 
 /* Появление начала при загрузке */
@@ -236,7 +237,7 @@ section { position: relative; overflow: clip; isolation: isolate; }
 .film img { height: clamp(130px, 14vw, 200px); width: auto; border-radius: 2px; filter: sepia(.12) saturate(.92); }
 
 /* 3. Почему кофе с яйцом */
-.why { background: var(--deep); color: var(--cream); padding: clamp(80px, 10vw, 140px) 0; overflow: hidden; isolation: isolate; }
+.why { background: var(--deep); color: var(--cream); padding: clamp(130px, 13vw, 190px) 0; overflow: hidden; isolation: isolate; }
 .why__grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 5vw, 80px); align-items: center; }
 .why__pics { position: relative; padding: 30px 40px 50px; }
 .why__pic { --rot: -2deg; }
@@ -247,7 +248,37 @@ section { position: relative; overflow: clip; isolation: isolate; }
 .why h2 { margin-bottom: 18px; color: var(--paper); }
 .why .card--dark p:not(.sign) { color: rgba(244, 234, 210, .85); }
 .reasons { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
-.reasons .card { color: var(--ink); padding: 20px 22px; }
+.reasons .card { color: var(--ink); padding: 22px 24px; border: 0; border-radius: 22px; background: linear-gradient(160deg, #fbf3df, #efdfb8); box-shadow: inset 0 2px 1px rgba(255, 255, 255, .7), 0 20px 40px -22px rgba(0, 0, 0, .55); }
+.why .card--dark { border: 0; border-radius: 26px; background: radial-gradient(120% 120% at 0% 0%, rgba(47, 125, 85, .45), rgba(20, 56, 36, .55) 60%); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .6); }
+
+/* Волны по краям «Почему»: два слоя плывут с разной скоростью, края блока мягкие */
+.wave { position: absolute; left: 0; right: 0; height: clamp(50px, 6vw, 90px); overflow: hidden; z-index: 1; pointer-events: none; }
+.wave--top { top: -1px; }
+.wave--bottom { bottom: -1px; }
+.wave svg { position: absolute; top: 0; left: 0; width: 200%; height: 100%; }
+.wave--top path { fill: var(--paper); }
+.wave--bottom path { fill: var(--cream); }
+.wave__b { opacity: .45; }
+@media (prefers-reduced-motion: no-preference) {
+  .wave__a { animation: waveMove 22s linear infinite; }
+  .wave__b { animation: waveMove 15s linear infinite reverse; }
+  .ripple i { animation: drift2 18s ease-in-out infinite alternate; }
+  .ripple i:nth-child(2) { animation-duration: 24s; animation-delay: -8s; }
+  .ripple i:nth-child(3) { animation-duration: 20s; animation-delay: -4s; }
+}
+@keyframes waveMove { to { transform: translateX(-50%); } }
+.ripple { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.ripple i { position: absolute; width: 46vw; aspect-ratio: 1; border-radius: 50%; filter: blur(60px); opacity: .35; }
+.ripple i:nth-child(1) { left: -10vw; top: 10%; background: radial-gradient(circle, #2f7d55, transparent 65%); }
+.ripple i:nth-child(2) { right: -12vw; top: 30%; background: radial-gradient(circle, #f2b632, transparent 65%); opacity: .14; }
+.ripple i:nth-child(3) { left: 30%; bottom: -20%; background: radial-gradient(circle, #0a6e3c, transparent 65%); }
+@keyframes drift2 { from { transform: translate(0, 0) scale(1); } to { transform: translate(6vw, -4vw) scale(1.15); } }
+
+/* Плавное появление: из размытия, без выезда */
+.js .reveal[data-from="soft"] { transform: translateY(26px) scale(.97); filter: blur(12px); transition: opacity 1.4s var(--ease), transform 1.4s var(--ease), filter 1.4s var(--ease); transition-delay: calc(var(--d, 0) * 160ms); }
+.js .reveal[data-from="soft"].is-in { transform: none; filter: none; }
+.js .why .pop { transform: scale(.94) rotate(var(--rot, 0deg)); filter: blur(14px); transition: opacity 1.6s var(--ease), transform 1.6s var(--ease), filter 1.6s var(--ease); transition-delay: calc(.2s + var(--d, 0) * 200ms); }
+.js .why .pop.is-in { transform: rotate(var(--rot, 0deg)); filter: none; }
 .reasons h3 { color: var(--green); margin-bottom: 6px; }
 .reasons p { font-size: .95rem; color: var(--muted); line-height: 1.45; }
 .beans--menu .b1 { left: 2%; top: 4%; }
@@ -462,6 +493,7 @@ section { position: relative; overflow: clip; isolation: isolate; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .js .reveal[data-from="soft"], .js .why .pop { filter: none; }
   .js .stage__text > *, .js .side { opacity: 1; transform: rotate(var(--rot, 0deg)); filter: none; transition: none; }
   .js .slide:not(.is-active), .js .pop { opacity: 1; transform: rotate(var(--rot, 0deg)); transition: none; }
   .js .reveal, .js .rise { opacity: 1; transform: none; translate: none; animation: none; transition: none; }
