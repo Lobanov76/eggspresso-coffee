@@ -19,10 +19,26 @@
 <link rel="icon" href="img/icon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/alumni-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/golos-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=21">
+<link rel="stylesheet" href="styles.css?v=31">
 </head>
 <body>
 <a class="skip" href="#menu">К меню</a>
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="bean-g" cx=".34" cy=".28" r=".85">
+      <stop offset="0" stop-color="#b87745"/><stop offset=".45" stop-color="#7a4220"/><stop offset="1" stop-color="#341607"/>
+    </radialGradient>
+    <linearGradient id="bean-hi" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <symbol id="bean" viewBox="0 0 64 84">
+    <path d="M32 3C51 3 61 22 61 43S50 81 32 81 3 64 3 43 13 3 32 3z" fill="url(#bean-g)"/>
+    <path d="M33 8c-9 10-4 20 1 30s6 22-3 38" fill="none" stroke="#1c0b03" stroke-width="5" stroke-linecap="round"/>
+    <path d="M36 10c-6 9-1 18 3 27" fill="none" stroke="#d39a63" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="20" cy="24" rx="9" ry="14" fill="url(#bean-hi)" transform="rotate(-18 20 24)"/>
+  </symbol>
+</svg>
 
 <header class="top" id="topbar">
   <a class="brand" href="#top" aria-label="Eggspresso, в начало">
@@ -44,13 +60,6 @@
   <section class="hero" id="top">
     <div class="hero__bg" aria-hidden="true">
       <video class="hero__video" data-wide="v/street.mp4" data-tall="v/street-m.mp4" poster="v/street.jpg" muted loop playsinline preload="none"></video>
-    </div>
-    <div class="beans" aria-hidden="true">
-      <img class="bean b1" src="img/decor/bean1.webp" alt="" width="87" height="113">
-      <img class="bean b2" src="img/decor/bean3.webp" alt="" width="89" height="115">
-      <img class="bean b3" src="img/decor/bean5.webp" alt="" width="91" height="113">
-      <img class="bean b4" src="img/decor/bean7.webp" alt="" width="100" height="115">
-      <img class="bean b5" src="img/decor/bean2.webp" alt="" width="91" height="116">
     </div>
     <div class="wrap hero__grid">
       <div class="hero__text">
@@ -87,11 +96,6 @@
           <p>Eggspresso открылся осенью 2025 года и&nbsp;первым в&nbsp;Узбекистане начал варить вьетнамский яичный кофе. Под потолком висят сотни соломенных шляп нон-ла, по&nbsp;стенам вьётся зелень, в&nbsp;зале тихая музыка.</p>
           <p>Сюда приходят на&nbsp;завтрак с&nbsp;семи утра, работают с&nbsp;ноутбуком у&nbsp;розеток и&nbsp;встречаются с&nbsp;друзьями до&nbsp;полуночи.</p>
         </div>
-        <ul class="facts">
-          <li class="card reveal" data-from="up" data-d="1"><b>07:00</b>открываемся каждый день</li>
-          <li class="card reveal" data-from="up" data-d="2"><b>5,0</b>оценка на&nbsp;Яндекс Картах</li>
-          <li class="card reveal" data-from="up" data-d="3"><b>00:00</b>закрываемся в&nbsp;полночь</li>
-        </ul>
       </div>
       <div class="collage">
         <figure class="frame c1 reveal" data-from="right"><img src="img/hats.webp" alt="Потолок Eggspresso из сотен шляп нон-ла со светильниками" width="960" height="1280" loading="lazy"><figcaption>Наш потолок из&nbsp;шляп</figcaption></figure>
@@ -121,11 +125,7 @@
 
   <!-- 3. Почему кофе с яйцом -->
   <section class="why" id="why">
-    <div class="beans beans--why" aria-hidden="true">
-      <img class="bean b1" src="img/decor/bean2.webp" alt="" width="91" height="116" loading="lazy">
-      <img class="bean b3" src="img/decor/bean6.webp" alt="" width="88" height="105" loading="lazy">
-      <img class="bean b5" src="img/decor/bean1.webp" alt="" width="87" height="113" loading="lazy">
-    </div>
+    <div class="beans beans--why" aria-hidden="true"><svg class="bean b1"><use href="#bean"/></svg><svg class="bean b2"><use href="#bean"/></svg><svg class="bean b3"><use href="#bean"/></svg><svg class="bean b4"><use href="#bean"/></svg></div>
     <div class="wrap why__grid">
       <figure class="frame frame--dark why__pic reveal" data-from="left">
         <img src="img/p/layers.webp" alt="Яичный кофе в высоком стакане: кофе снизу, крем сверху" width="800" height="1067" loading="lazy">
@@ -146,37 +146,61 @@
     </div>
   </section>
 
-  <!-- 4. Как готовят: у каждого шага свой ролик -->
+  <!-- 4. Как готовят: экран закреплён, шаги выезжают по очереди -->
   <section class="recipe" id="recipe">
-    <div class="wrap">
-      <div class="recipe__head reveal" data-from="up">
-        <p class="sign" lang="vi">Pha chế</p>
-        <h2>Как его готовят у&nbsp;нас</h2>
-        <p>Четыре шага и&nbsp;около пяти минут. Чашку подают сразу, пока крем тёплый.</p>
+    <div class="recipe__pin">
+      <div class="wrap recipe__stage">
+        <div class="recipe__head">
+          <p class="sign" lang="vi">Pha chế</p>
+          <h2>Как его готовят у&nbsp;нас</h2>
+          <p>Четыре шага и&nbsp;около пяти минут.</p>
+          <ol class="dots" aria-hidden="true"><li class="is-on">Желток</li><li>Фин</li><li>Крем</li><li>Какао</li></ol>
+        </div>
+        <ol class="stack">
+        <li class="slide" data-i="0">
+          <figure class="slide__pic"><img src="img/p/r-yolk.webp" alt="Желток в белой миске" width="900" height="1125" loading="lazy"></figure>
+          <div class="slide__text">
+            <p class="slide__n"><b>1</b> из&nbsp;4</p>
+            <p class="slide__vn" lang="vi">Trứng</p>
+            <h3>Взбить желток</h3>
+            <p>Желток отделяют от&nbsp;белка и&nbsp;взбивают со&nbsp;сгущёнкой, пока он не&nbsp;станет светлым, густым и&nbsp;пышным, как крем для торта.</p>
+          </div>
+        </li>
+        <li class="slide" data-i="1">
+          <figure class="slide__pic"><img src="img/p/r-phin.webp" alt="Вьетнамский фильтр фин на стакане" width="900" height="1125" loading="lazy"></figure>
+          <div class="slide__text">
+            <p class="slide__n"><b>2</b> из&nbsp;4</p>
+            <p class="slide__vn" lang="vi">Phin</p>
+            <h3>Сварить кофе в&nbsp;фине</h3>
+            <p>Молотую робусту засыпают в&nbsp;фин, металлический фильтр, и&nbsp;заливают кипятком. Кофе капает медленно, поэтому выходит крепким и&nbsp;плотным.</p>
+          </div>
+        </li>
+        <li class="slide" data-i="2">
+          <figure class="slide__pic"><img src="img/p/r-cream.webp" alt="Ложка густого яичного крема над чашкой" width="900" height="1125" loading="lazy"></figure>
+          <div class="slide__text">
+            <p class="slide__n"><b>3</b> из&nbsp;4</p>
+            <p class="slide__vn" lang="vi">Kem trứng</p>
+            <h3>Выложить крем</h3>
+            <p>Тёплый крем ложится на&nbsp;кофе тяжёлой лентой и&nbsp;держит форму: два слоя не&nbsp;смешиваются, пока вы их не&nbsp;размешаете.</p>
+          </div>
+        </li>
+        <li class="slide" data-i="3">
+          <figure class="slide__pic"><img src="img/p/r-cocoa.webp" alt="Яичный кофе в ребристом стакане, сверху какао" width="900" height="1125" loading="lazy"></figure>
+          <div class="slide__text">
+            <p class="slide__n"><b>4</b> из&nbsp;4</p>
+            <p class="slide__vn" lang="vi">Ca cao</p>
+            <h3>Посыпать какао</h3>
+            <p>Щепотка какао сверху, ложечка рядом. Чашку подают сразу, пока крем тёплый. Сначала крем ложкой, потом перемешать.</p>
+          </div>
+        </li>
+        </ol>
       </div>
-      <ol class="steps">
-        <li class="step reveal" data-from="up" data-d="1">
-          <figure class="step__pic"><video data-auto src="v/s-yolk.mp4" poster="v/s-yolk.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></figure>
-          <div class="step__text"><span class="step__n">1</span><h3>Взбить желток</h3><p>Желток отделяют от&nbsp;белка и&nbsp;взбивают со&nbsp;сгущёнкой, пока он не&nbsp;станет светлым и&nbsp;густым.</p></div>
-        </li>
-        <li class="step reveal" data-from="up" data-d="2">
-          <figure class="step__pic"><video data-auto src="v/s-phin.mp4" poster="v/s-phin.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></figure>
-          <div class="step__text"><span class="step__n">2</span><h3>Сварить кофе в&nbsp;фине</h3><p>Кофе капает через металлический фильтр медленно, поэтому выходит крепким и&nbsp;плотным.</p></div>
-        </li>
-        <li class="step reveal" data-from="up" data-d="3">
-          <figure class="step__pic"><video data-auto src="v/s-pour.mp4" poster="v/s-pour.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></figure>
-          <div class="step__text"><span class="step__n">3</span><h3>Налить крем</h3><p>Тёплый крем ложится на&nbsp;кофе тяжёлой лентой и&nbsp;держит форму: два слоя не&nbsp;смешиваются.</p></div>
-        </li>
-        <li class="step reveal" data-from="up" data-d="4">
-          <figure class="step__pic"><img src="img/p/s-cocoa.webp" alt="" width="720" height="900" loading="lazy"></figure>
-          <div class="step__text"><span class="step__n">4</span><h3>Посыпать какао</h3><p>Щепотка какао сверху, ложечка рядом. Можно пить.</p></div>
-        </li>
-      </ol>
     </div>
   </section>
 
   <!-- 5. Общее меню: напитки, десерты и еда -->
   <section class="menu" id="menu">
+    <div class="beans beans--menu" aria-hidden="true"><svg class="bean b1"><use href="#bean"/></svg><svg class="bean b2"><use href="#bean"/></svg><svg class="bean b3"><use href="#bean"/></svg><svg class="bean b4"><use href="#bean"/></svg><svg class="bean b5"><use href="#bean"/></svg></div>
     <div class="wrap">
       <div class="menu__head reveal" data-from="up">
         <p class="sign sign--yolk" lang="vi">Thực đơn</p>
@@ -325,6 +349,7 @@
 
   <!-- 6. Гости: отзывы с Яндекс Карт и ролики из зала -->
   <section class="guests" id="guests">
+    <div class="beans beans--guests" aria-hidden="true"><svg class="bean b1"><use href="#bean"/></svg><svg class="bean b2"><use href="#bean"/></svg><svg class="bean b3"><use href="#bean"/></svg></div>
     <div class="wrap guests__head reveal" data-from="up">
       <p class="sign" lang="vi">Khách quen</p>
       <h2>Наши гости</h2>
@@ -384,6 +409,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=21"></script>
+<script src="script.js?v=31"></script>
 </body>
 </html>

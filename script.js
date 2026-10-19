@@ -25,6 +25,38 @@
   }, { rootMargin: "0px 0px -12% 0px" });
   document.querySelectorAll(".reveal").forEach((el) => shown.observe(el));
 
+  /* Рецепт: на компьютере экран закреплён, шаги выезжают по очереди; на телефоне просто появляются */
+  const recipe = document.getElementById("recipe");
+  const slides = [...document.querySelectorAll(".slide")];
+  const dots = [...document.querySelectorAll(".dots li")];
+  const pinned = matchMedia("(min-width: 861px) and (prefers-reduced-motion: no-preference)");
+  let last = -1, ticking = false;
+  const setStep = (k) => {
+    if (k === last) return;
+    last = k;
+    slides.forEach((s, i) => {
+      s.classList.toggle("is-on", i <= k);
+      s.classList.toggle("is-past", i < k);
+      s.style.setProperty("--back", Math.max(0, k - i));
+    });
+    dots.forEach((d, i) => d.classList.toggle("is-on", i === k));
+  };
+  const onScroll = () => {
+    ticking = false;
+    if (!pinned.matches || !recipe) return;
+    const r = recipe.getBoundingClientRect();
+    const total = recipe.offsetHeight - innerHeight;
+    const p = Math.min(1, Math.max(0, -r.top / total));
+    setStep(Math.min(slides.length - 1, Math.floor(p * slides.length * 1.08)));
+  };
+  if (slides.length) {
+    setStep(0);
+    addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+    addEventListener("resize", onScroll);
+    onScroll();
+    slides.forEach((s) => shown.observe(s));
+  }
+
   /* Ролики играют, только пока видны на экране */
   const seen = new IntersectionObserver((entries) => {
     for (const e of entries) {
