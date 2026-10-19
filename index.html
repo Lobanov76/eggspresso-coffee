@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; frame-src https://yandex.uz https://yandex.ru; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex">
+<title>Eggspresso. Вьетнамский яичный кофе в Ташкенте</title>
+<meta name="description" content="Первый в Узбекистане вьетнамский яичный кофе. Ташкент, улица Яхьё Гулямова, 38. Каждый день с 07:00 до 00:00.">
+<meta name="theme-color" content="#0a6e3c">
+<meta property="og:title" content="Eggspresso. Яичный кофе, как в Ханое">
+<meta property="og:description" content="Первый в Узбекистане вьетнамский яичный кофе. Ташкент, Яхьё Гулямова, 38.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="icon" href="img/icon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/hats.webp" as="image">
+<link rel="stylesheet" href="styles.css?v=5">
+</head>
+<body>
+<a class="skip" href="#menu">К меню</a>
+
+<header class="top" id="top">
+  <a class="brand" href="#intro" aria-label="Eggspresso, в начало">
+    <svg class="star" viewBox="0 0 100 95" aria-hidden="true"><path d="M50 0l11.8 36.3H100L69.1 58.7 80.9 95 50 72.6 19.1 95l11.8-36.3L0 36.3h38.2z"/></svg>
+    <span>Eggspresso</span>
+  </a>
+  <nav class="top__nav" aria-label="Разделы">
+    <a href="#story">История</a>
+    <a href="#recipe">Рецепт</a>
+    <a href="#menu">Меню</a>
+    <a href="#guests">Гости</a>
+  </nav>
+  <a class="pill pill--star top__cta" href="#visit">Адрес</a>
+</header>
+
+<main>
+  <!-- Начало: взгляд на потолок из шляп нон-ла, при прокрутке чашка раскрывается в круге -->
+  <section class="intro" id="intro" aria-label="Eggspresso">
+    <div class="intro__stage">
+      <div class="intro__media">
+        <img class="intro__hats" src="img/hats.webp" alt="Потолок кофейни из вьетнамских соломенных шляп нон-ла со светильниками" width="960" height="1280">
+        <div class="intro__cup">
+          <video class="intro__video" src="v/cup.mp4" poster="v/cup.jpg" muted loop playsinline preload="auto" aria-hidden="true"></video>
+        </div>
+      </div>
+      <div class="intro__text">
+        <div class="intro__a">
+          <p class="vn" lang="vi">Cà phê trứng</p>
+          <h1>Яичный кофе, как в&nbsp;Ханое</h1>
+          <p class="intro__lead">Первый вьетнамский яичный кофе в&nbsp;Узбекистане. Ташкент, Яхьё Гулямова,&nbsp;38.</p>
+          <div class="intro__btns">
+            <a class="pill pill--star" href="#menu">Смотреть меню</a>
+            <a class="pill pill--ghost" href="#visit">Как добраться</a>
+          </div>
+        </div>
+        <p class="intro__b" aria-hidden="true">Желток, взбитый со&nbsp;сгущёнкой, поверх крепкого кофе из&nbsp;фина. Сначала ложкой, потом глоток.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="wrap story__grid">
+      <figure class="story__film">
+        <video data-auto src="v/hanoi.mp4" poster="v/hanoi.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+      </figure>
+      <div class="story__text">
+        <p class="story__year" aria-hidden="true">1946</p>
+        <h2>В Ханое закончилось молоко</h2>
+        <p>Шла война, свежего молока в&nbsp;городе не&nbsp;было. Бармен отеля Metropole Нгуен Ван Жанг взбил вместо него желток с&nbsp;сахаром и&nbsp;получил густой сладкий крем. Кофе с&nbsp;такой шапкой назвали cà phê trứng.</p>
+        <p>Семья Жанга до&nbsp;сих пор варит его в&nbsp;своём кафе в&nbsp;старом квартале Ханоя. А&nbsp;в&nbsp;Ташкенте с&nbsp;осени 2025&nbsp;года его готовят в&nbsp;Eggspresso, первыми в&nbsp;Узбекистане.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="recipe" id="recipe">
+    <div class="wrap">
+      <h2 class="recipe__title">Как готовят яичный кофе</h2>
+    </div>
+    <div class="wrap recipe__grid">
+      <div class="recipe__screen">
+        <video class="recipe__video" src="v/recipe.mp4" poster="v/recipe.jpg" muted playsinline preload="none" aria-hidden="true"></video>
+      </div>
+      <ol class="steps">
+        <li class="step is-on" data-t="0" data-end="12.8">
+          <h3>Взбить желток</h3>
+          <p>Желток отделяют от&nbsp;белка и&nbsp;взбивают со&nbsp;сгущёнкой и&nbsp;сахаром, пока он не&nbsp;станет светлым и&nbsp;густым, как крем для торта.</p>
+        </li>
+        <li class="step" data-t="13" data-end="17.8">
+          <h3>Налить крем</h3>
+          <p>Тёплый крем льётся в&nbsp;стеклянную чашку тяжёлой лентой. Он&nbsp;держит форму и&nbsp;не&nbsp;тонет.</p>
+        </li>
+        <li class="step" data-t="18" data-end="22.8">
+          <h3>Сварить кофе в&nbsp;фине</h3>
+          <p>Фин&nbsp;это вьетнамский металлический фильтр. Кофе капает через него медленно, поэтому выходит крепким и&nbsp;плотным.</p>
+        </li>
+        <li class="step" data-t="23" data-end="27">
+          <h3>Посыпать какао</h3>
+          <p>Сверху немного какао. Чашку подают сразу, пока крем тёплый и&nbsp;пышный.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="wrap why__grid">
+      <figure class="why__cup">
+        <img src="img/cup-layers.webp" alt="Яичный кофе в стеклянной чашке: снизу кофе, сверху густой яичный крем и какао" width="720" height="1280" loading="lazy">
+        <figcaption class="layers" aria-hidden="true">
+          <span class="layer layer--cocoa">какао</span>
+          <span class="layer layer--cream">яичный крем</span>
+          <span class="layer layer--coffee">кофе из&nbsp;фина</span>
+        </figcaption>
+      </figure>
+      <div class="why__text">
+        <h2>Почему яйцо, а&nbsp;не&nbsp;молоко</h2>
+        <dl class="why__list">
+          <div>
+            <dt>Вкус десерта</dt>
+            <dd>Крем получается плотнее молочной пены. Гости сравнивают его с&nbsp;тирамису и&nbsp;заварным кремом, а&nbsp;горечь кофе снизу его уравновешивает.</dd>
+          </div>
+          <div>
+            <dt>Сытно</dt>
+            <dd>В&nbsp;желтке есть белок, витамины A, D и&nbsp;B12 и&nbsp;холин. Одна чашка вполне может заменить десерт.</dd>
+          </div>
+          <div>
+            <dt>Кофе крепче</dt>
+            <dd>Под кремом не&nbsp;эспрессо с&nbsp;водой, а&nbsp;густой кофе из&nbsp;фина. Он&nbsp;не&nbsp;теряется под сладким слоем.</dd>
+          </div>
+        </dl>
+        <p class="why__note">Это сладкий и&nbsp;плотный напиток. Если хочется полегче, возьмите вьетнамский зелёный чай или американо.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="menu">
+    <div class="wrap">
+      <div class="menu__head">
+        <h2><svg class="star" viewBox="0 0 100 95" aria-hidden="true"><path d="M50 0l11.8 36.3H100L69.1 58.7 80.9 95 50 72.6 19.1 95l11.8-36.3L0 36.3h38.2z"/></svg>Меню</h2>
+        <p>Цены в&nbsp;сумах.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Разделы меню">
+        <button type="button" role="tab" id="t-sig" aria-controls="p-sig" aria-selected="true">Фирменное</button>
+        <button type="button" role="tab" id="t-coffee" aria-controls="p-coffee" aria-selected="false">Кофе</button>
+        <button type="button" role="tab" id="t-iced" aria-controls="p-iced" aria-selected="false">Холодное</button>
+        <button type="button" role="tab" id="t-tea" aria-controls="p-tea" aria-selected="false">Чай</button>
+        <button type="button" role="tab" id="t-fresh" aria-controls="p-fresh" aria-selected="false">Лимонады и&nbsp;соки</button>
+        <button type="button" role="tab" id="t-sweet" aria-controls="p-sweet" aria-selected="false">Выпечка и&nbsp;десерты</button>
+        <button type="button" role="tab" id="t-food" aria-controls="p-food" aria-selected="false">Еда</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-sig" aria-labelledby="t-sig">
+        <ul class="sig">
+          <li class="sig__item sig__item--main">
+            <img src="img/cup-layers.webp" alt="" width="720" height="1280" loading="lazy">
+            <div>
+              <p class="vn" lang="vi">Cà phê trứng</p>
+              <h3>Яичный кофе</h3>
+              <p>Крепкий кофе из&nbsp;фина под шапкой желтка, взбитого со&nbsp;сгущёнкой. Сверху какао.</p>
+              <p class="price">50 000</p>
+            </div>
+          </li>
+          <li class="sig__item">
+            <div>
+              <p class="vn" lang="vi">Ca cao trứng</p>
+              <h3>Яичное какао</h3>
+              <p>Тот же крем из&nbsp;желтка, только на&nbsp;горячем какао. Для тех, кто не&nbsp;пьёт кофе.</p>
+              <p class="price">50 000</p>
+            </div>
+          </li>
+          <li class="sig__item">
+            <div>
+              <p class="vn" lang="vi">Cà phê đậu phộng</p>
+              <h3>Арахисовый кофе</h3>
+              <p>Вьетнамский кофе со&nbsp;вкусом жареного арахиса. Горячий или со&nbsp;льдом.</p>
+              <p class="price">50 000</p>
+            </div>
+          </li>
+          <li class="sig__item sig__item--photo">
+            <img src="img/salted.webp" alt="" width="498" height="636" loading="lazy">
+            <div>
+              <p class="vn" lang="vi">Cà phê muối</p>
+              <h3>Солёный кофе</h3>
+              <p>Холодный кофе с&nbsp;солоноватой сливочной пенкой, как в&nbsp;городе Хюэ. Только со&nbsp;льдом.</p>
+              <p class="price">50 000</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-coffee" aria-labelledby="t-coffee">
+        <div class="groups">
+          <div class="group">
+            <h3>Классика</h3>
+            <div class="sizes" aria-hidden="true"><span>S</span><span>M</span><span>L</span></div>
+            <ul>
+              <li><span class="n">Эспрессо<small>Espresso</small></span><span class="c" data-s="S"></span><span class="c" data-s="M">20 000</span><span class="c" data-s="L"></span></li>
+              <li><span class="n">Доппио<small>Doppio</small></span><span class="c" data-s="S"></span><span class="c" data-s="M">30 000</span><span class="c" data-s="L"></span></li>
+              <li><span class="n">Американо<small>Americano</small></span><span class="c" data-s="S">30 000</span><span class="c" data-s="M">35 000</span><span class="c" data-s="L">40 000</span></li>
+            </ul>
+          </div>
+          <div class="group">
+            <h3>С молоком</h3>
+            <div class="sizes" aria-hidden="true"><span>S</span><span>M</span><span>L</span></div>
+            <ul>
+              <li><span class="n">Капучино<small>Cappuccino</small></span><span class="c" data-s="S">30 000</span><span class="c" data-s="M">35 000</span><span class="c" data-s="L">40 000</span></li>
+              <li><span class="n">Латте<small>Latte</small></span><span class="c" data-s="S">30 000</span><span class="c" data-s="M">35 000</span><span class="c" data-s="L">40 000</span></li>
+              <li><span class="n">Флэт уайт<small>Flat White</small></span><span class="c" data-s="S">35 000</span><span class="c" data-s="M"></span><span class="c" data-s="L"></span></li>
+              <li><span class="n">Раф<small>Raf</small></span><span class="c" data-s="S"></span><span class="c" data-s="M">45 000</span><span class="c" data-s="L"></span></li>
+              <li><span class="n">Мокко<small>Mocha</small></span><span class="c" data-s="S"></span><span class="c" data-s="M">35 000</span><span class="c" data-s="L"></span></li>
+            </ul>
+          </div>
+          <div class="group">
+            <h3>Какао и&nbsp;матча</h3>
+            <ul class="one">
+              <li><span class="n">Какао<small>Cocoa</small></span><span class="c">40 000</span></li>
+              <li><span class="n">Горячий шоколад<small>Hot Chocolate</small></span><span class="c">45 000</span></li>
+              <li><span class="n">Матча латте<small>Matcha Latte</small></span><span class="c">40 000</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-iced" aria-labelledby="t-iced">
+        <div class="groups">
+          <div class="group">
+            <h3>Кофе со&nbsp;льдом</h3>
+            <div class="sizes" aria-hidden="true"><span>M</span><span>L</span><span>XL</span></div>
+            <ul>
+              <li><span class="n">Айс американо<small>Iced Americano</small></span><span class="c" data-s="M"></span><span class="c" data-s="L">35 000</span><span class="c" data-s="XL">40 000</span></li>
+              <li><span class="n">Айс капучино<small>Iced Cappuccino</small></span><span class="c" data-s="M"></span><span class="c" data-s="L">40 000</span><span class="c" data-s="XL">45 000</span></li>
+              <li><span class="n">Айс латте<small>Iced Latte</small></span><span class="c" data-s="M"></span><span class="c" data-s="L">40 000</span><span class="c" data-s="XL">45 000</span></li>
+              <li><span class="n">Бамбл<small>Апельсиновый сок и эспрессо</small></span><span class="c" data-s="M"></span><span class="c" data-s="L">60 000</span><span class="c" data-s="XL">70 000</span></li>
+              <li><span class="n">Айс флэт уайт<small>Iced Flat White</small></span><span class="c" data-s="M">45 000</span><span class="c" data-s="L"></span><span class="c" data-s="XL"></span></li>
+              <li><span class="n">Айс раф<small>Iced Raf</small></span><span class="c" data-s="M">50 000</span><span class="c" data-s="L"></span><span class="c" data-s="XL"></span></li>
+            </ul>
+          </div>
+          <figure class="group__pic"><img src="img/bumble.webp" alt="Бамбл: стакан с апельсиновым соком и эспрессо слоями, долька апельсина" width="720" height="973" loading="lazy"></figure>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-tea" aria-labelledby="t-tea">
+        <div class="groups">
+          <div class="group">
+            <h3>Чай</h3>
+            <ul class="one">
+              <li><span class="n">Вьетнамский зелёный<small>Vietnamese Green Tea</small></span><span class="c">30 000</span></li>
+              <li><span class="n">Чёрный<small>Black Tea</small></span><span class="c">30 000</span></li>
+              <li><span class="n">Эрл грей<small>Earl Grey</small></span><span class="c">35 000</span></li>
+              <li><span class="n">Чёрный с&nbsp;чабрецом<small>Black Thyme</small></span><span class="c">35 000</span></li>
+              <li><span class="n">Жасминовый<small>Jasmine</small></span><span class="c">35 000</span></li>
+              <li><span class="n">Молочный улун<small>Milky Oolong</small></span><span class="c">35 000</span></li>
+              <li><span class="n">Чёрный с&nbsp;лимоном и&nbsp;мятой<small>Lemon Mint Black Tea</small></span><span class="c">40 000</span></li>
+            </ul>
+          </div>
+          <div class="group">
+            <h3>Фруктовый чай</h3>
+            <ul class="one">
+              <li><span class="n">Смородина и&nbsp;яблоко<small>Currant &amp; Apple</small></span><span class="c">45 000</span></li>
+              <li><span class="n">Вишня и&nbsp;миндаль<small>Cherry &amp; Almond</small></span><span class="c">45 000</span></li>
+              <li><span class="n">Облепиха и&nbsp;апельсин<small>Sea Buckthorn &amp; Orange</small></span><span class="c">45 000</span></li>
+              <li><span class="n">Манго и&nbsp;клубника<small>Mango &amp; Strawberry</small></span><span class="c">45 000</span></li>
+              <li><span class="n">Маракуйя и&nbsp;яблоко<small>Passion Fruit &amp; Apple</small></span><span class="c">45 000</span></li>
+              <li><span class="n">Манго и&nbsp;маракуйя<small>Mango &amp; Passion Fruit</small></span><span class="c">45 000</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-fresh" aria-labelledby="t-fresh">
+        <div class="groups">
+          <div class="group">
+            <h3>Лимонады</h3>
+            <ul class="one">
+              <li><span class="n">Мохито классический<small>Classic Mojito</small></span><span class="c">45 000</span></li>
+              <li><span class="n">Мохито клубничный<small>Strawberry Mojito</small></span><span class="c">45 000</span></li>
+              <li><span class="n">Малиновый лимонад<small>Raspberry Lemonade</small></span><span class="c">50 000</span></li>
+              <li><span class="n">Манго и&nbsp;маракуйя<small>Mango Passion</small></span><span class="c">50 000</span></li>
+            </ul>
+          </div>
+          <div class="group">
+            <h3>Свежевыжатые соки</h3>
+            <ul class="one">
+              <li><span class="n">Яблоко<small>Apple</small></span><span class="c">40 000</span></li>
+              <li><span class="n">Яблоко и&nbsp;морковь<small>Apple-carrot</small></span><span class="c">40 000</span></li>
+              <li><span class="n">Апельсин и&nbsp;морковь<small>Orange-carrot</small></span><span class="c">45 000</span></li>
+              <li><span class="n">Цитрус микс<small>Апельсин, лимон, лайм</small></span><span class="c">45 000</span></li>
+              <li><span class="n">Апельсин<small>Orange</small></span><span class="c">50 000</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-sweet" aria-labelledby="t-sweet">
+        <div class="sweets-pics">
+          <img src="img/dessert-mango.webp" alt="Муссовые десерты в виде манго и лимона на витрине" width="720" height="896" loading="lazy">
+          <img src="img/dessert-blueberry.webp" alt="Десерты в виде черники на золотых подложках" width="720" height="896" loading="lazy">
+          <img src="img/dessert-napoleon.webp" alt="Слоёный торт с клубникой и кремом на витрине" width="720" height="896" loading="lazy">
+        </div>
+        <div class="groups">
+          <div class="group">
+            <h3>Выпечка</h3>
+            <ul class="one">
+              <li><span class="n">Классический круассан<small>Classic Croissant</small></span><span class="c">25 000</span></li>
+              <li><span class="n">Слойка с&nbsp;изюмом<small>Raisin Puff Pastry</small></span><span class="c">28 000</span></li>
+              <li><span class="n">Малиновый круассан<small>Raspberry Croissant</small></span><span class="c">30 000</span></li>
+              <li><span class="n">Шоколадный круассан<small>Chocolate Croissant</small></span><span class="c">30 000</span></li>
+              <li><span class="n">Синнабон<small>Cinnabon</small></span><span class="c">30 000</span></li>
+              <li><span class="n">Блинчики<small>Pancakes</small></span><span class="c">30 000</span></li>
+              <li><span class="n">Блин спагетти<small>Spaghetti Pancakes</small></span><span class="c">45 000</span></li>
+            </ul>
+          </div>
+          <div class="group">
+            <h3>Десерты</h3>
+            <ul class="one">
+              <li><span class="n">Медовик<small>Honey Mood</small></span><span class="c">50 000</span></li>
+              <li><span class="n">Трайфл<small>Trifle Classic</small></span><span class="c">50 000</span></li>
+              <li><span class="n">Рафаэлло<small>Rafaello Cake</small></span><span class="c">50 000</span></li>
+              <li><span class="n">Сникерс<small>Snickers Delight</small></span><span class="c">60 000</span></li>
+              <li><span class="n">Киндер<small>Kinder Dream</small></span><span class="c">70 000</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-food" aria-labelledby="t-food">
+        <div class="groups groups--3">
+          <div class="group">
+            <h3>Азиатские супы</h3>
+            <ul class="one">
+              <li><span class="n">Рамэн с&nbsp;говядиной<small>Beef Ramen</small></span><span class="c">60 000</span></li>
+              <li><span class="n">Рамэн сырный<small>Cheesy Ramen</small></span><span class="c">60 000</span></li>
+              <li><span class="n">Рамэн ранч<small>Ranch Ramen</small></span><span class="c">60 000</span></li>
+              <li><span class="n">Том ям с&nbsp;курицей<small>Tom Yum Chicken</small></span><span class="c">95 000</span></li>
+            </ul>
+          </div>
+          <div class="group">
+            <h3>Салаты</h3>
+            <ul class="one">
+              <li><span class="n">Цезарь<small>Caesar Salad</small></span><span class="c">40 000</span></li>
+              <li><span class="n">Греческий<small>Greek Salad</small></span><span class="c">60 000</span></li>
+              <li><span class="n">С&nbsp;бурратой<small>Burrata Salad</small></span><span class="c">70 000</span></li>
+            </ul>
+          </div>
+          <div class="group">
+            <h3>Сэндвичи</h3>
+            <ul class="one">
+              <li><span class="n">Индейка и&nbsp;кукуруза<small>Sandwich Turkey &amp; Corn</small></span><span class="c">50 000</span></li>
+              <li><span class="n">Панини с&nbsp;ветчиной и&nbsp;сыром<small>Panini Ham &amp; Cheese</small></span><span class="c">50 000</span></li>
+              <li><span class="n">Круассан с&nbsp;лососем и&nbsp;авокадо<small>Croissant Sandwich</small></span><span class="c">80 000</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="more" id="more">
+    <div class="wrap">
+      <h2>Не&nbsp;только яйцо</h2>
+      <p class="more__lead">Матча, кофе со&nbsp;льдом и&nbsp;десерты, которые выглядят как фрукты. Так их готовят за&nbsp;стойкой.</p>
+    </div>
+    <ul class="reels">
+      <li class="reel">
+        <video data-auto src="v/matcha.mp4" poster="v/matcha.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <p>Матча латте</p>
+      </li>
+      <li class="reel">
+        <video data-auto src="v/iced.mp4" poster="v/iced.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <p>Яичный кофе со&nbsp;льдом</p>
+      </li>
+      <li class="reel">
+        <video data-auto src="v/bumble.mp4" poster="v/bumble.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <p>Бамбл от&nbsp;Абдумажида</p>
+      </li>
+      <li class="reel">
+        <video data-auto src="v/mojito.mp4" poster="v/mojito.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <p>Матча мохито</p>
+      </li>
+      <li class="reel">
+        <video data-auto src="v/desserts.mp4" poster="v/desserts.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <p>Арт-десерты</p>
+      </li>
+      <li class="reel">
+        <video data-auto src="v/raf.mp4" poster="v/raf.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <p>Шоколадный айс раф</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="guests" id="guests">
+    <div class="wrap guests__grid">
+      <div class="guests__text">
+        <h2>Гости снимают сами</h2>
+        <blockquote>
+          <p>«Текстура невероятно нежная, напоминает жидкое тирамису или заварной крем»</p>
+          <footer>misssaralife, из&nbsp;истории в&nbsp;Instagram</footer>
+        </blockquote>
+        <p class="guests__rating"><b>5,0</b> на&nbsp;Яндекс Картах по&nbsp;17&nbsp;оценкам</p>
+        <p>Многие уходят с&nbsp;мишкой на&nbsp;стакане. Под неоновой вывеской в&nbsp;зале фотографируется почти каждый.</p>
+        <a class="link" href="https://www.instagram.com/eggspresso_uz/" target="_blank" rel="noopener noreferrer">Все истории гостей в&nbsp;Instagram</a>
+      </div>
+      <div class="wall">
+        <img src="img/guest-95.webp" alt="Стакан с соком на фоне круглой неоновой вывески Eggspresso" width="640" height="999" loading="lazy">
+        <img src="img/guest-42.webp" alt="Плюшевые мишки, которых дают к кофе с собой" width="640" height="1001" loading="lazy">
+        <img src="img/guest-59.webp" alt="Матча латте с рисунком сердца" width="640" height="1001" loading="lazy">
+        <img src="img/guest-79.webp" alt="Холодный напиток с мишкой на стакане" width="640" height="1001" loading="lazy">
+        <img src="img/guest-62.webp" alt="Коллаж гостя: зал, светильники и стаканы с напитками" width="640" height="1001" loading="lazy">
+        <img src="img/guest-40.webp" alt="Два холодных напитка с лимоном на столе" width="640" height="1001" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap visit__grid">
+      <div class="visit__text">
+        <h2>Ждём на&nbsp;Яхьё Гулямова,&nbsp;38</h2>
+        <p class="visit__now" id="now" hidden></p>
+        <dl class="visit__facts">
+          <div><dt>Адрес</dt><dd>Ташкент, Ц-1, улица Яхьё Гулямова,&nbsp;38, первый этаж. Рядом сквер Амира Темура.</dd></div>
+          <div><dt>Часы</dt><dd>Каждый день с&nbsp;07:00 до&nbsp;00:00</dd></div>
+          <div><dt>Телефон</dt><dd><a href="tel:+998901599888">+998&nbsp;90&nbsp;159&nbsp;98&nbsp;88</a></dd></div>
+          <div><dt>В&nbsp;день рождения</dt><dd>Скидка 15% на&nbsp;всё меню</dd></div>
+        </dl>
+        <div class="visit__btns">
+          <a class="pill pill--star" href="https://yandex.uz/maps/org/eggspresso/243779933236/" target="_blank" rel="noopener noreferrer">Маршрут в&nbsp;Яндекс Картах</a>
+          <a class="pill pill--ghost" href="https://www.instagram.com/eggspresso_uz/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+      <div class="visit__side">
+        <img class="visit__photo" src="img/outside.webp" alt="Вход в Eggspresso: зелёная вывеска со звездой, терраса под зонтами, лестница с цветами" width="960" height="1280" loading="lazy">
+        <div class="visit__map">
+          <iframe title="Eggspresso на Яндекс Картах" src="https://yandex.uz/map-widget/v1/?oid=243779933236&amp;ol=biz&amp;z=16" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__row">
+    <p class="vn" lang="vi">Hẹn gặp lại!</p>
+    <p>Eggspresso, кофейня и&nbsp;десерты. Ташкент.</p>
+  </div>
+</footer>
+
+<script src="script.js?v=5"></script>
+</body>
+</html>
