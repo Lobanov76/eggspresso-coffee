@@ -19,43 +19,36 @@
     new IntersectionObserver(([e]) => bar.classList.toggle("is-solid", !e.isIntersecting), { rootMargin: "-80px 0px 0px" }).observe(hero);
   }
 
-  /* Блоки выезжают при прокрутке (один раз) */
+  /* Блоки выезжают при прокрутке (один раз); фото .pop вылетают после текста */
   const shown = new IntersectionObserver((entries) => {
     for (const e of entries) if (e.isIntersecting) { e.target.classList.add("is-in"); shown.unobserve(e.target); }
   }, { rootMargin: "0px 0px -12% 0px" });
-  document.querySelectorAll(".reveal").forEach((el) => shown.observe(el));
+  document.querySelectorAll(".reveal, .pop").forEach((el) => shown.observe(el));
 
-  /* Рецепт: на компьютере экран закреплён, шаги выезжают по очереди; на телефоне просто появляются */
-  const recipe = document.getElementById("recipe");
-  const slides = [...document.querySelectorAll(".slide")];
-  const dots = [...document.querySelectorAll(".dots li")];
-  const pinned = matchMedia("(min-width: 861px) and (prefers-reduced-motion: no-preference)");
-  let last = -1, ticking = false;
-  const setStep = (k) => {
-    if (k === last) return;
-    last = k;
-    slides.forEach((s, i) => {
-      s.classList.toggle("is-on", i <= k);
-      s.classList.toggle("is-past", i < k);
-      s.style.setProperty("--back", Math.max(0, k - i));
+  /* Листалки вбок (шаги рецепта, отзывы): свайп пальцем или стрелки */
+  document.querySelectorAll(".rail").forEach((rail) => {
+    const box = rail.closest("section");
+    const btns = [...box.querySelectorAll(".arrow")];
+    const count = box.querySelector(".count b");
+    const items = [...rail.children];
+    const step = () => (items[1] ? items[1].offsetLeft - items[0].offsetLeft : rail.clientWidth);
+    btns.forEach((b) => b.addEventListener("click", () => rail.scrollBy({ left: step() * Number(b.dataset.dir), behavior: calm.matches ? "auto" : "smooth" })));
+    const update = () => {
+      const max = rail.scrollWidth - rail.clientWidth - 2;
+      if (btns[0]) btns[0].disabled = rail.scrollLeft <= 2;
+      if (btns[1]) btns[1].disabled = rail.scrollLeft >= max;
+      const i = rail.scrollLeft >= max ? items.length - 1 : Math.min(items.length - 1, Math.round(rail.scrollLeft / step()));
+      items.forEach((it, k) => it.classList.toggle("is-active", k === i));
+      if (count) count.textContent = i + 1;
+    };
+    let t = 0;
+    rail.addEventListener("scroll", () => { cancelAnimationFrame(t); t = requestAnimationFrame(update); }, { passive: true });
+    rail.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); rail.scrollBy({ left: step() * (e.key === "ArrowRight" ? 1 : -1), behavior: calm.matches ? "auto" : "smooth" }); }
     });
-    dots.forEach((d, i) => d.classList.toggle("is-on", i === k));
-  };
-  const onScroll = () => {
-    ticking = false;
-    if (!pinned.matches || !recipe) return;
-    const r = recipe.getBoundingClientRect();
-    const total = recipe.offsetHeight - innerHeight;
-    const p = Math.min(1, Math.max(0, -r.top / total));
-    setStep(Math.min(slides.length - 1, Math.floor(p * slides.length * 1.08)));
-  };
-  if (slides.length) {
-    setStep(0);
-    addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
-    addEventListener("resize", onScroll);
-    onScroll();
-    slides.forEach((s) => shown.observe(s));
-  }
+    addEventListener("resize", update);
+    update();
+  });
 
   /* Ролики играют, только пока видны на экране */
   const seen = new IntersectionObserver((entries) => {
@@ -67,12 +60,6 @@
   }, { rootMargin: "120px 0px" });
   document.querySelectorAll("video[data-auto]").forEach((v) => seen.observe(v));
   if (hv) new IntersectionObserver(([e]) => { if (e.isIntersecting) play(hv); else hv.pause(); }).observe(hv);
-
-  /* Лента отзывов: вторая копия для бесшовной прокрутки */
-  const qt = document.querySelector(".quotes__track");
-  if (qt && !calm.matches) {
-    [...qt.children].forEach((li) => { const c = li.cloneNode(true); c.setAttribute("aria-hidden", "true"); qt.append(c); });
-  }
 
   /* Меню: вкладки и фото раздела */
   const pic = document.getElementById("menu-pic");

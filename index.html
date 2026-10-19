@@ -19,7 +19,7 @@
 <link rel="icon" href="img/icon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/alumni-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/golos-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=31">
+<link rel="stylesheet" href="styles.css?v=42">
 </head>
 <body>
 <a class="skip" href="#menu">К меню</a>
@@ -85,9 +85,9 @@
     </ul>
   </section>
 
-  <!-- 2. О нас: коллаж из фото в рамках -->
+  <!-- 2. О нас: сначала текст, потом вылетают фото зала; фото с Pinterest только как плёнка-декор -->
   <section class="about" id="about">
-    <p class="ghost" aria-hidden="true" lang="vi">Phố cổ</p>
+    <div class="deco" aria-hidden="true"><p class="ghost"><span lang="vi">Phố cổ</span><small>старый квартал</small></p><img class="leaf leaf--tl" src="img/leaf/monstera1.webp" alt="" width="571" height="900" loading="lazy"><img class="leaf leaf--br" src="img/leaf/palm.webp" alt="" width="582" height="900" loading="lazy"></div>
     <div class="wrap about__grid">
       <div class="about__text">
         <div class="card card--line reveal" data-from="left">
@@ -98,38 +98,33 @@
         </div>
       </div>
       <div class="collage">
-        <figure class="frame c1 reveal" data-from="right"><img src="img/hats.webp" alt="Потолок Eggspresso из сотен шляп нон-ла со светильниками" width="960" height="1280" loading="lazy"><figcaption>Наш потолок из&nbsp;шляп</figcaption></figure>
-        <figure class="frame c2 reveal" data-from="right" data-d="1"><img src="img/p/yellow-wall.webp" alt="Жёлтая стена старого дома с бумажными фонариками" width="900" height="1200" loading="lazy"></figure>
-        <figure class="frame c3 reveal" data-from="left" data-d="2"><img src="img/p/newspaper.webp" alt="Яичный кофе на ханойской газете рядом со свёртком из банановых листьев" width="900" height="900" loading="lazy"></figure>
-        <figure class="frame c4 reveal" data-from="right" data-d="3"><img src="img/hall.webp" alt="Зал Eggspresso: зелёные кресла и шляпы-светильники" width="960" height="1175" loading="lazy"><figcaption>Зал на&nbsp;Яхьё Гулямова</figcaption></figure>
-        <p class="tape reveal" data-from="up" data-d="4" lang="vi">Cà phê Hà Nội</p>
+        <figure class="frame c1 pop" data-d="3"><img src="img/hats.webp" alt="Потолок Eggspresso из сотен шляп нон-ла со светильниками" width="960" height="1280" loading="lazy"><figcaption>Потолок из&nbsp;шляп</figcaption></figure>
+        <figure class="frame c2 pop" data-d="4"><img src="img/hall.webp" alt="Зал Eggspresso: зелёные кресла, растения и шляпы-светильники" width="960" height="1175" loading="lazy"><figcaption>Зал</figcaption></figure>
+        <figure class="frame c3 pop" data-d="5"><img src="img/cappuccino.webp" alt="Капучино и вода на деревянном подносе" width="900" height="1200" loading="lazy"></figure>
+        <figure class="frame c4 pop" data-d="6"><img src="img/bar.webp" alt="Кофемашина и кофемолка за стойкой" width="900" height="1200" loading="lazy"><figcaption>Бар</figcaption></figure>
+        <p class="tape pop" data-d="7" lang="vi">Cà phê Hà Nội</p>
       </div>
     </div>
-    <div class="strip" aria-hidden="true">
-      <div class="strip__track">
-        <img src="img/p/hats-sun.webp" alt="" width="1200" height="675" loading="lazy">
-        <img src="img/p/lanterns.webp" alt="" width="900" height="1200" loading="lazy">
-        <img src="img/p/hanoi-cafe.webp" alt="" width="900" height="1200" loading="lazy">
-        <img src="img/p/lotus.webp" alt="" width="715" height="715" loading="lazy">
-        <img src="img/p/letage.webp" alt="" width="900" height="1200" loading="lazy">
-        <img src="img/p/ivy.webp" alt="" width="900" height="1200" loading="lazy">
-        <img src="img/p/hats-sun.webp" alt="" width="1200" height="675" loading="lazy">
-        <img src="img/p/lanterns.webp" alt="" width="900" height="1200" loading="lazy">
-        <img src="img/p/hanoi-cafe.webp" alt="" width="900" height="1200" loading="lazy">
-        <img src="img/p/lotus.webp" alt="" width="715" height="715" loading="lazy">
-        <img src="img/p/letage.webp" alt="" width="900" height="1200" loading="lazy">
-        <img src="img/p/ivy.webp" alt="" width="900" height="1200" loading="lazy">
-      </div>
+    <div class="film reveal" data-from="left" aria-hidden="true">
+      <img src="img/p/yellow-wall.webp" alt="" width="900" height="1200" loading="lazy">
+      <img src="img/p/lanterns.webp" alt="" width="900" height="1200" loading="lazy">
+      <img src="img/p/hanoi-cafe.webp" alt="" width="900" height="1200" loading="lazy">
+      <img src="img/p/letage.webp" alt="" width="900" height="1200" loading="lazy">
+      <img src="img/p/ivy.webp" alt="" width="900" height="1200" loading="lazy">
     </div>
   </section>
 
-  <!-- 3. Почему кофе с яйцом -->
+  <!-- 3. Почему кофе с яйцом: их настоящая чашка, карточки вылетают по очереди -->
   <section class="why" id="why">
+    <div class="deco" aria-hidden="true"><p class="ghost"><span lang="vi">Hết sữa</span><small>молока нет</small></p><img class="leaf leaf--tl" src="img/leaf/fern.webp" alt="" width="420" height="900" loading="lazy"><img class="leaf leaf--r" src="img/leaf/monstera3.webp" alt="" width="486" height="900" loading="lazy"></div>
+    <img aria-hidden="true" class="glow glow--a" src="img/p/lantern-red.webp" alt="" width="700" height="1050" loading="lazy">
     <div class="beans beans--why" aria-hidden="true"><svg class="bean b1"><use href="#bean"/></svg><svg class="bean b2"><use href="#bean"/></svg><svg class="bean b3"><use href="#bean"/></svg><svg class="bean b4"><use href="#bean"/></svg></div>
     <div class="wrap why__grid">
-      <figure class="frame frame--dark why__pic reveal" data-from="left">
-        <img src="img/p/layers.webp" alt="Яичный кофе в высоком стакане: кофе снизу, крем сверху" width="800" height="1067" loading="lazy">
-      </figure>
+      <div class="why__pics">
+        <figure class="frame frame--dark why__pic pop" data-d="1"><img src="img/egg-coffee.webp" alt="Яичный кофе Eggspresso: снизу кофе, сверху густой крем и какао" width="720" height="1280" loading="lazy"></figure>
+        <figure class="frame why__mini pop" data-d="3" aria-hidden="true"><img src="img/p/lotus.webp" alt="" width="715" height="715" loading="lazy"></figure>
+        <figure class="frame why__mini2 pop" data-d="4" aria-hidden="true"><img src="img/p/newspaper.webp" alt="" width="900" height="900" loading="lazy"></figure>
+      </div>
       <div class="why__text">
         <div class="card card--dark reveal" data-from="right">
           <p class="sign sign--yolk" lang="vi">Hết sữa</p>
@@ -137,62 +132,63 @@
           <p>В&nbsp;1946 году в&nbsp;Ханое шла война, и&nbsp;свежего молока не&nbsp;было: на&nbsp;дверях лавок висели таблички «Hết sữa», «молока нет». Бармен отеля Metropole Нгуен Ван Жанг взбил вместо него желток с&nbsp;сахаром и&nbsp;получил густой сладкий крем. Его семья до&nbsp;сих пор варит этот кофе в&nbsp;старом квартале.</p>
         </div>
         <ul class="reasons">
-          <li class="card card--cream reveal" data-from="up" data-d="1"><h3>Как десерт</h3><p>Крем плотнее молочной пены. Гости сравнивают его с&nbsp;тирамису и&nbsp;заварным кремом.</p></li>
-          <li class="card card--cream reveal" data-from="up" data-d="2"><h3>Сытно</h3><p>В&nbsp;желтке есть белок и&nbsp;витамины A, D, B12. Одна чашка заменяет пирожное.</p></li>
-          <li class="card card--cream reveal" data-from="up" data-d="3"><h3>Крепкий кофе снизу</h3><p>Под кремом густой кофе из&nbsp;фина, вьетнамского фильтра. Он не&nbsp;теряется под сладким слоем.</p></li>
-          <li class="card card--cream reveal" data-from="up" data-d="4"><h3>Как пить</h3><p>Сначала попробуйте крем ложкой, потом перемешайте с&nbsp;кофе.</p></li>
+          <li class="card card--cream reveal" data-from="left" data-d="2"><h3>Как десерт</h3><p>Крем плотнее молочной пены. Гости сравнивают его с&nbsp;тирамису и&nbsp;заварным кремом.</p></li>
+          <li class="card card--cream reveal" data-from="right" data-d="3"><h3>Сытно</h3><p>В&nbsp;желтке есть белок и&nbsp;витамины A, D, B12. Одна чашка заменяет пирожное.</p></li>
+          <li class="card card--cream reveal" data-from="left" data-d="4"><h3>Крепкий кофе снизу</h3><p>Под кремом густой кофе из&nbsp;фина, вьетнамского фильтра. Он не&nbsp;теряется под сладким слоем.</p></li>
+          <li class="card card--cream reveal" data-from="right" data-d="5"><h3>Как пить</h3><p>Сначала попробуйте крем ложкой, потом перемешайте с&nbsp;кофе.</p></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- 4. Как готовят: экран закреплён, шаги выезжают по очереди -->
+  <!-- 4. Как готовят: шаги листаются вбок, стрелки в помощь -->
   <section class="recipe" id="recipe">
-    <div class="recipe__pin">
-      <div class="wrap recipe__stage">
-        <div class="recipe__head">
-          <p class="sign" lang="vi">Pha chế</p>
-          <h2>Как его готовят у&nbsp;нас</h2>
-          <p>Четыре шага и&nbsp;около пяти минут.</p>
-          <ol class="dots" aria-hidden="true"><li class="is-on">Желток</li><li>Фин</li><li>Крем</li><li>Какао</li></ol>
-        </div>
-        <ol class="stack">
-        <li class="slide" data-i="0">
-          <figure class="slide__pic"><img src="img/p/r-yolk.webp" alt="Желток в белой миске" width="900" height="1125" loading="lazy"></figure>
-          <div class="slide__text">
-            <p class="slide__n"><b>1</b> из&nbsp;4</p>
-            <p class="slide__vn" lang="vi">Trứng</p>
-            <h3>Взбить желток</h3>
-            <p>Желток отделяют от&nbsp;белка и&nbsp;взбивают со&nbsp;сгущёнкой, пока он не&nbsp;станет светлым, густым и&nbsp;пышным, как крем для торта.</p>
-          </div>
-        </li>
-        <li class="slide" data-i="1">
-          <figure class="slide__pic"><img src="img/p/r-phin.webp" alt="Вьетнамский фильтр фин на стакане" width="900" height="1125" loading="lazy"></figure>
-          <div class="slide__text">
-            <p class="slide__n"><b>2</b> из&nbsp;4</p>
-            <p class="slide__vn" lang="vi">Phin</p>
-            <h3>Сварить кофе в&nbsp;фине</h3>
-            <p>Молотую робусту засыпают в&nbsp;фин, металлический фильтр, и&nbsp;заливают кипятком. Кофе капает медленно, поэтому выходит крепким и&nbsp;плотным.</p>
-          </div>
-        </li>
-        <li class="slide" data-i="2">
-          <figure class="slide__pic"><img src="img/p/r-cream.webp" alt="Ложка густого яичного крема над чашкой" width="900" height="1125" loading="lazy"></figure>
-          <div class="slide__text">
-            <p class="slide__n"><b>3</b> из&nbsp;4</p>
-            <p class="slide__vn" lang="vi">Kem trứng</p>
-            <h3>Выложить крем</h3>
-            <p>Тёплый крем ложится на&nbsp;кофе тяжёлой лентой и&nbsp;держит форму: два слоя не&nbsp;смешиваются, пока вы их не&nbsp;размешаете.</p>
-          </div>
-        </li>
-        <li class="slide" data-i="3">
-          <figure class="slide__pic"><img src="img/p/r-cocoa.webp" alt="Яичный кофе в ребристом стакане, сверху какао" width="900" height="1125" loading="lazy"></figure>
-          <div class="slide__text">
-            <p class="slide__n"><b>4</b> из&nbsp;4</p>
-            <p class="slide__vn" lang="vi">Ca cao</p>
-            <h3>Посыпать какао</h3>
-            <p>Щепотка какао сверху, ложечка рядом. Чашку подают сразу, пока крем тёплый. Сначала крем ложкой, потом перемешать.</p>
-          </div>
-        </li>
+    <div class="deco" aria-hidden="true"><p class="ghost"><span lang="vi">Pha chế</span><small>готовим</small></p><img class="leaf leaf--l" src="img/leaf/palm.webp" alt="" width="582" height="900" loading="lazy"><img class="leaf leaf--tr" src="img/leaf/monstera2.webp" alt="" width="897" height="900" loading="lazy"></div>
+    <div class="wrap recipe__grid">
+      <div class="recipe__head reveal" data-from="left">
+        <p class="sign" lang="vi">Pha chế</p>
+        <h2>Как его готовят у&nbsp;нас</h2>
+        <p>Четыре шага и&nbsp;около пяти минут. Листайте вбок.</p>
+        <div class="rail-ctrl"><div class="arrows"><button type="button" class="arrow" data-dir="-1" aria-label="Шаги: назад"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="arrow" data-dir="1" aria-label="Шаги: дальше"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div><p class="count" aria-live="polite"><b>1</b> / 4</p></div>
+      </div>
+      <div class="rail-wrap reveal" data-from="right">
+        <ol class="rail rail--steps" tabindex="0" aria-label="Шаги приготовления">
+          <li class="slide">
+            <figure class="slide__pic"><img src="img/p/r-yolk.webp" alt="Желток в белой миске" width="900" height="1125" loading="lazy"></figure>
+            <div class="slide__text">
+              <p class="slide__n"><b>1</b> шаг из&nbsp;4</p>
+              <p class="slide__vn" lang="vi">Trứng</p>
+              <h3>Взбить желток</h3>
+              <p>Желток отделяют от&nbsp;белка и&nbsp;взбивают со&nbsp;сгущёнкой, пока он не&nbsp;станет светлым, густым и&nbsp;пышным, как крем для торта.</p>
+            </div>
+          </li>
+          <li class="slide">
+            <figure class="slide__pic"><img src="img/p/r-phin.webp" alt="Вьетнамский фильтр фин на стакане" width="900" height="1125" loading="lazy"></figure>
+            <div class="slide__text">
+              <p class="slide__n"><b>2</b> шаг из&nbsp;4</p>
+              <p class="slide__vn" lang="vi">Phin</p>
+              <h3>Сварить кофе в&nbsp;фине</h3>
+              <p>Молотую робусту засыпают в&nbsp;фин, металлический фильтр, и&nbsp;заливают кипятком. Кофе капает медленно, поэтому выходит крепким.</p>
+            </div>
+          </li>
+          <li class="slide">
+            <figure class="slide__pic"><img src="img/p/r-cream.webp" alt="Ложка густого яичного крема над чашкой" width="900" height="1125" loading="lazy"></figure>
+            <div class="slide__text">
+              <p class="slide__n"><b>3</b> шаг из&nbsp;4</p>
+              <p class="slide__vn" lang="vi">Kem trứng</p>
+              <h3>Выложить крем</h3>
+              <p>Тёплый крем ложится на&nbsp;кофе тяжёлой лентой и&nbsp;держит форму: два слоя не&nbsp;смешиваются, пока вы их не&nbsp;размешаете.</p>
+            </div>
+          </li>
+          <li class="slide">
+            <figure class="slide__pic"><img src="img/p/r-cocoa.webp" alt="Яичный кофе в ребристом стакане, сверху какао" width="900" height="1125" loading="lazy"></figure>
+            <div class="slide__text">
+              <p class="slide__n"><b>4</b> шаг из&nbsp;4</p>
+              <p class="slide__vn" lang="vi">Ca cao</p>
+              <h3>Посыпать какао</h3>
+              <p>Щепотка какао сверху, ложечка рядом. Чашку подают сразу, пока крем тёплый.</p>
+            </div>
+          </li>
         </ol>
       </div>
     </div>
@@ -200,6 +196,8 @@
 
   <!-- 5. Общее меню: напитки, десерты и еда -->
   <section class="menu" id="menu">
+    <div class="deco" aria-hidden="true"><p class="ghost"><span lang="vi">Thực đơn</span><small>меню</small></p><img class="leaf leaf--r" src="img/leaf/monstera1.webp" alt="" width="571" height="900" loading="lazy"><img class="leaf leaf--bl" src="img/leaf/fern.webp" alt="" width="420" height="900" loading="lazy"></div>
+    <img aria-hidden="true" class="glow glow--b" src="img/p/lantern-red.webp" alt="" width="700" height="1050" loading="lazy">
     <div class="beans beans--menu" aria-hidden="true"><svg class="bean b1"><use href="#bean"/></svg><svg class="bean b2"><use href="#bean"/></svg><svg class="bean b3"><use href="#bean"/></svg><svg class="bean b4"><use href="#bean"/></svg><svg class="bean b5"><use href="#bean"/></svg></div>
     <div class="wrap">
       <div class="menu__head reveal" data-from="up">
@@ -347,36 +345,45 @@
     </div>
   </section>
 
-  <!-- 6. Гости: отзывы с Яндекс Карт и ролики из зала -->
+  <!-- 6. Гости: отзывы листаются стрелками, ниже настоящие фото и ролики кофейни -->
   <section class="guests" id="guests">
+    <div class="deco" aria-hidden="true"><p class="ghost"><span lang="vi">Khách quen</span><small>наши гости</small></p><img class="leaf leaf--l" src="img/leaf/monstera2.webp" alt="" width="897" height="900" loading="lazy"><img class="leaf leaf--tr" src="img/leaf/palm.webp" alt="" width="582" height="900" loading="lazy"></div>
     <div class="beans beans--guests" aria-hidden="true"><svg class="bean b1"><use href="#bean"/></svg><svg class="bean b2"><use href="#bean"/></svg><svg class="bean b3"><use href="#bean"/></svg></div>
-    <div class="wrap guests__head reveal" data-from="up">
-      <p class="sign" lang="vi">Khách quen</p>
-      <h2>Наши гости</h2>
-      <p class="rating"><b>5,0</b> на&nbsp;Яндекс Картах</p>
-    </div>
-    <div class="quotes">
-      <ul class="quotes__track">
-        <li class="quote"><p>«Очень по-вьетнамски!»</p><span>Отзыв на&nbsp;Яндекс Картах</span></li>
-        <li class="quote"><p>«Очень стильное и&nbsp;атмосферное заведение, вкусная матча и&nbsp;десерты, приятная негромкая музыка, много зелени»</p><span>Елизавета Н.</span></li>
-        <li class="quote"><p>«Кофе с&nbsp;яйцом оказался на&nbsp;удивление вкусным»</p><span>Trupthii</span></li>
-        <li class="quote"><p>«Внутри так красиво украшено цветами, как будто находишься в&nbsp;уютной гостиной»</p><span>Ольга М.</span></li>
-        <li class="quote"><p>«Это напоминает нам о&nbsp;доме!»</p><span>Отзыв на&nbsp;Яндекс Картах</span></li>
-        <li class="quote"><p>«Самая лучшая кофейня. И&nbsp;десерты вкусные, и&nbsp;кофе очень вкусный»</p><span>Малика К.</span></li>
-        <li class="quote"><p>«Хорошее место, чтобы спокойно посидеть с&nbsp;друзьями или семьёй»</p><span>Азамат А.</span></li>
-        <li class="quote"><p>«Отличный кофе, уютное место и&nbsp;фирменные вьетнамские кофейные блюда»</p><span>Christoph M.</span></li>
-      </ul>
-    </div>
-    <div class="wrap reels">
-      <figure class="frame reel reveal" data-from="up" data-d="1"><video data-auto src="v/matcha.mp4" poster="v/matcha.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption>Матча латте</figcaption></figure>
-      <figure class="frame reel reveal" data-from="up" data-d="2"><video data-auto src="v/iced.mp4" poster="v/iced.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption>Яичный кофе со&nbsp;льдом</figcaption></figure>
-      <figure class="frame reel reveal" data-from="up" data-d="3"><video data-auto src="v/raf.mp4" poster="v/raf.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption>Шоколадный айс раф</figcaption></figure>
-      <figure class="frame reel reveal" data-from="up" data-d="4"><video data-auto src="v/bumble.mp4" poster="v/bumble.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption>Бамбл</figcaption></figure>
+    <div class="wrap">
+      <div class="guests__head reveal" data-from="up">
+        <p class="sign" lang="vi">Khách quen</p>
+        <h2>Наши гости</h2>
+        <p class="rating"><b>5,0</b> на&nbsp;Яндекс Картах</p>
+        <div class="arrows"><button type="button" class="arrow" data-dir="-1" aria-label="Отзывы: назад"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="arrow" data-dir="1" aria-label="Отзывы: дальше"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
+      </div>
+      <div class="rail-wrap">
+        <ul class="rail rail--quotes" tabindex="0" aria-label="Отзывы гостей">
+          <li class="quote"><p>«Очень по-вьетнамски!»</p><span>Отзыв на&nbsp;Яндекс Картах</span></li>
+          <li class="quote"><p>«Очень стильное и&nbsp;атмосферное заведение, вкусная матча и&nbsp;десерты, приятная негромкая музыка, много зелени»</p><span>Елизавета Н.</span></li>
+          <li class="quote"><p>«Кофе с&nbsp;яйцом оказался на&nbsp;удивление вкусным»</p><span>Trupthii</span></li>
+          <li class="quote"><p>«Внутри так красиво украшено цветами, как будто находишься в&nbsp;уютной гостиной»</p><span>Ольга М.</span></li>
+          <li class="quote"><p>«Это напоминает нам о&nbsp;доме!»</p><span>Отзыв на&nbsp;Яндекс Картах</span></li>
+          <li class="quote"><p>«Самая лучшая кофейня. И&nbsp;десерты вкусные, и&nbsp;кофе очень вкусный»</p><span>Малика К.</span></li>
+          <li class="quote"><p>«Хорошее место, чтобы спокойно посидеть с&nbsp;друзьями или семьёй»</p><span>Азамат А.</span></li>
+          <li class="quote"><p>«Отличный кофе, уютное место и&nbsp;фирменные вьетнамские кофейные блюда»</p><span>Christoph M.</span></li>
+        </ul>
+      </div>
+      <div class="atmo">
+        <figure class="frame a1 pop" data-d="1"><img src="img/barista.webp" alt="Бариста в шляпе нон-ла пробует напиток" width="720" height="960" loading="lazy"></figure>
+        <figure class="frame a2 pop" data-d="2"><video data-auto src="v/matcha.mp4" poster="v/matcha.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption>Матча латте</figcaption></figure>
+        <figure class="frame a3 pop" data-d="3"><img src="img/egg-leaves.webp?v=2" alt="Яичный кофе среди зелени" width="720" height="720" loading="lazy"></figure>
+        <figure class="frame a4 pop" data-d="4"><img src="img/dessert-mango.webp" alt="Муссовые десерты в виде манго и лимона" width="717" height="896" loading="lazy"><figcaption>Десерты</figcaption></figure>
+        <figure class="frame a5 pop" data-d="2"><video data-auto src="v/iced.mp4" poster="v/iced.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption>Яичный кофе со&nbsp;льдом</figcaption></figure>
+        <figure class="frame a6 pop" data-d="3"><img src="img/shelf.webp" alt="Полки с чаем и посудой за стойкой" width="900" height="1200" loading="lazy"></figure>
+        <figure class="frame a7 pop" data-d="4"><img src="img/dessert-blue.webp" alt="Десерты в виде черники" width="717" height="896" loading="lazy"></figure>
+        <figure class="frame a8 pop" data-d="5"><video data-auto src="v/raf.mp4" poster="v/raf.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption>Шоколадный айс раф</figcaption></figure>
+      </div>
     </div>
   </section>
 
   <!-- 7. Как найти -->
   <section class="find" id="find">
+    <div class="deco" aria-hidden="true"><p class="ghost"><span lang="vi">Hẹn gặp bạn</span><small>до встречи</small></p><img class="leaf leaf--r" src="img/leaf/fern.webp" alt="" width="420" height="900" loading="lazy"><img class="leaf leaf--l" src="img/leaf/papaya.webp" alt="" width="702" height="900" loading="lazy"></div>
     <div class="wrap find__grid">
       <div class="card card--line find__text reveal" data-from="left">
         <p class="sign" lang="vi">Hẹn gặp bạn</p>
@@ -409,6 +416,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=31"></script>
+<script src="script.js?v=42"></script>
 </body>
 </html>
